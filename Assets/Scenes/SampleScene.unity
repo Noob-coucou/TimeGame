@@ -134,9 +134,7 @@ GameObject:
   - component: {fileID: 52535608}
   - component: {fileID: 52535605}
   - component: {fileID: 52535606}
-  - component: {fileID: 52535607}
   - component: {fileID: 52535609}
-  - component: {fileID: 52535610}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -157,10 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 432, y: 104}
+  scrollPos: {x: 455.64713, y: 222.46758}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 280
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -168,10 +166,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 52535606}
-  selectedCommands:
-  - {fileID: 52535610}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -197,35 +193,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
-    y: 70
-    width: 111
+    x: 8.411766
+    y: -1.9411697
+    width: 114
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 0
-  blockName: New Block
+  blockName: "Welcome\uFF01"
   description: 
-  eventHandler: {fileID: 52535607}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 52535609}
-  - {fileID: 52535610}
   suppressAllAutoSelections: 0
---- !u!114 &52535607
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52535604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 52535606}
-  suppressBlockAutoSelect: 0
-  waitForFrames: 1
 --- !u!4 &52535608
 Transform:
   m_ObjectHideFlags: 0
@@ -258,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: TestForFungus
+  storyText: "\u6B22\u8FCE\u4F60\uFF01\u6211\u4EB2\u7231\u7684\u670B\u53CB\u3002{w=3}"
   description: 
   character: {fileID: 998953857}
   portrait: {fileID: 0}
@@ -267,35 +247,10 @@ MonoBehaviour:
   showCount: 1
   extendPrevious: 0
   fadeWhenDone: 1
-  waitForClick: 1
+  waitForClick: 0
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &52535610
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52535604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 2
-  indentLevel: 0
-  text: 1
-  description: 
-  targetBlock: {fileID: 52535606}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
 --- !u!1 &129728356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,7 +2011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665074790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.844006, y: -13.355341, z: 6.622221}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

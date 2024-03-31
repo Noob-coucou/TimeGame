@@ -30,8 +30,9 @@ public class TimeControlled : MonoBehaviour
     {
         
     }
-    public void OnTimeUpdate()
+    public virtual void OnTimeUpdate()
     { 
+    
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     public Player player;
-    public float GameTime;
+    public static float GameTime;
     TimeControlled[] timeObjects;
 
     // Start is called before the first frame update
@@ -22,7 +22,20 @@ public class TimeController : MonoBehaviour
     }  
     void Update()
     {
-      
+        if (player != null)
+        {
+            //Z轴距离决定时间
+            float distance = -(transform.position.z - player.transform.position.z);
+            // 更新GameTime
+            GameTime = distance;
+            //Debug.Log(GameTime);
+           
+        }
+        foreach (TimeControlled timeObject in timeObjects)
+        {
+           //Debug.Log("timeObjects" + timeObject); 
+           timeObject.OnTimeUpdate();
+        }
     }
     public void ChangeCurrentTime(Vector3 playerPostion)
     { 

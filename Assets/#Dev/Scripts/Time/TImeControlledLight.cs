@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TImeControlledLight : MonoBehaviour
+public class TimeControlledLight : TimeControlled
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnTimeUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        float rotationAngle = TimeController.GameTime * 2; 
+        transform.rotation = Quaternion.Euler(rotationAngle, 0, 0);
     }
 }
