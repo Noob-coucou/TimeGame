@@ -25,7 +25,7 @@ public class TimeController : MonoBehaviour
         if (player != null)
         {
             //Z轴距离决定时间
-            float distance = -(transform.position.z - player.transform.position.z);
+            float distance =player.transform.position.z- transform.position.z;
             // 更新GameTime
             GameTime = distance;
             //Debug.Log(GameTime);

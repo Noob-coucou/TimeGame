@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
+using Fungus;
 
 public abstract class Interactive : MonoBehaviour
 {
-
+    private Flowchart flowchart;
     private bool isPlayerNear = false;
     private Player player; // 用于存储玩家对象的引用
 
+    private void Start()
+    {
+        flowchart = GetComponent<Flowchart>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // 确保进入的是玩家

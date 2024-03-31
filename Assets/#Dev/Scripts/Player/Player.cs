@@ -72,6 +72,10 @@ public class Player : MonoBehaviour
         // 这意味着不考虑Y轴（上下），只关注在水平面上的移动。
         return new Vector3(dir.x, 0, dir.z).normalized;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
     public void OnFootstep()
     { 
     }

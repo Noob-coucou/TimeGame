@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,15 +10,10 @@ public class InteractiveBox : Interactive
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     protected override void Interact()
     {
-        Debug.Log("Interacting with the box");
+        
+        //Debug.Log("Interacting with the box");
     }
     
 }
