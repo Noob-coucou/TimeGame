@@ -7,8 +7,6 @@ public class TestManager : MonoBehaviour
     public Player player;
     public List<Interactive> interactives;
 
-    public bool hasInteractive=false;
-    public Interactive currentInteractive;
 
     private void Awake()
     {

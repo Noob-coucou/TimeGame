@@ -34,10 +34,12 @@ namespace PlayerState
         }
         public void OnUpdate()
         {
-            if (self.input.PlayerBasic.Jump.WasPressedThisFrame())
-                self.TransState(PlayerStateType.JumpStart);
-            else if (self.input.PlayerBasic.Move.ReadValue<Vector2>().magnitude >= 0.05f)
-                self.TransState(PlayerStateType.Move);
+            //if (self.input.PlayerBasic.Jump.WasPressedThisFrame())
+            //    self.TransState(PlayerStateType.JumpStart);
+            //else if (self.input.PlayerBasic.Move.ReadValue<Vector2>().magnitude >= 0.05f)
+            //self.TransState(PlayerStateType.Move);
+            if (self.input.PlayerBasic.Move.ReadValue<Vector2>().magnitude >= 0.05f)
+            self.TransState(PlayerStateType.Move);
         }
 
         public void OnExit()

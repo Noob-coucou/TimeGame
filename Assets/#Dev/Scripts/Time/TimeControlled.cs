@@ -19,7 +19,7 @@ public class TimeControlled : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         gameObject.SetActive(initialState);
 

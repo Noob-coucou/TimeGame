@@ -43,4 +43,14 @@ public class TimeController : MonoBehaviour
 
     }
 
+    void OnGUI()
+    {
+        GUIStyle guiStyle = new GUIStyle();
+        guiStyle.fontSize = 24; // 设置文本大小为24
+
+        Rect rect = new Rect(10, 10, 200, 20);
+
+        GUI.Label(rect, "CurrentTime: " + GameTime.ToString("0"),guiStyle);
+    }
+
 }
