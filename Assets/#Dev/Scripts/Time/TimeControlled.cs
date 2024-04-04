@@ -28,11 +28,14 @@ public class TimeControlled : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+  
     }
     public virtual void OnTimeUpdate()
-    { 
-    
+    {
+        foreach (TimeState timeState in TimeStates)
+        {
+           
+        }
     }
 
 }

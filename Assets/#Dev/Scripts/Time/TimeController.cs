@@ -37,11 +37,6 @@ public class TimeController : MonoBehaviour
            timeObject.OnTimeUpdate();
         }
     }
-    public void ChangeCurrentTime(Vector3 playerPostion)
-    { 
-        playerPostion= playerPostion.normalized;
-
-    }
 
     void OnGUI()
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class TestManager : MonoBehaviour
 {
     public Player player;
-    public List<Interactive> interactives;
 
 
     private void Awake()
