@@ -42,11 +42,19 @@ public class TimeController : MonoBehaviour
     void OnGUI()
     {
         GUIStyle guiStyle = new GUIStyle();
-        guiStyle.fontSize = 24; // 设置文本大小为24
+        guiStyle.fontSize = 24;
+        if (GameTime < 0)
+        {
+            guiStyle.normal.textColor = Color.white;
+        }
+        else
+        {
+            guiStyle.normal.textColor = Color.black;
+        }
 
         Rect rect = new Rect(10, 10, 200, 20);
 
-        GUI.Label(rect, "CurrentTime: " + GameTime.ToString("0"),guiStyle);
+        GUI.Label(rect, "CurrentTime: " + GameTime.ToString("0"), guiStyle);
     }
 
 }

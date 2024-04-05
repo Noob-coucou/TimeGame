@@ -14,8 +14,9 @@ public class TimeControlled : MonoBehaviour
     }
     [SerializeField]
     private bool initialState;
-    [SerializeField]
-    private List<TimeState> TimeStates;
+
+    public List<TimeState> TimeStates;
+
     private int currentStateIndex = 0;
     
     protected virtual void Start()
@@ -35,7 +36,7 @@ public class TimeControlled : MonoBehaviour
             {
                 currentStateIndex--;
             }
-            UpdateState();
+           
         }
         // 前进至下一个状态
         else if (currentStateIndex < TimeStates.Count - 1 && TimeController.GameTime >= TimeStates[currentStateIndex + 1].time)
@@ -44,18 +45,32 @@ public class TimeControlled : MonoBehaviour
             {
                 currentStateIndex++;
             }
-            UpdateState();
+            
         }
-    
+        UpdateState();
+        InterpolatePosition();
     }
-
+    
+    //* 应用当前状态
     private void UpdateState()
     {
         gameObject.SetActive(TimeStates[currentStateIndex].state);
-        // 如果需要，也可以更新位置
-        // transform.position = TimeStates[currentStateIndex].position;
     }
+    //* Function：计算物体在两个状态之间的位置并更新
+    private void InterpolatePosition()
+    {
+        TimeState previousState = currentStateIndex > 0 ? TimeStates[currentStateIndex - 1] : TimeStates[currentStateIndex];
+        TimeState nextState = currentStateIndex < TimeStates.Count - 1 ? TimeStates[currentStateIndex + 1] : TimeStates[currentStateIndex];
+    
+        float lerpFactor = 0f;
+        if (nextState.time != previousState.time)
+        {
+            lerpFactor = (TimeController.GameTime - previousState.time) / (nextState.time - previousState.time);
+        }
 
+        Vector3 interpolatedPosition = Vector3.Lerp(previousState.position, nextState.position, lerpFactor);
+        transform.position = interpolatedPosition;
+    }
 }
 
 
