@@ -1,3 +1,4 @@
+using Fungus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,19 +6,62 @@ using UnityEngine;
 
 public class TestManager : MonoBehaviour
 {
+    public static TestManager Instance;
     public Player player;
     private float deltaTime = 0.0f;
-
+    [SerializeField]
+    private Flowchart flowchart;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (Instance == null)
+        {
+            
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializeGame();
+        }
+        else if (Instance != this)
+        {
+        
+            Destroy(gameObject);
+        }
     }
 
     void Start()
     {
-        
+        flowchart.ExecuteBlock("Init");
     }
+    private void InitializeGame()
+    {
 
+        ResetAllBoxes();
+
+    }
+    private void ResetAllBoxes()
+    {
+        // 假设你有一个方法来获取所有宝箱的ID
+        foreach (var box in GetAllBoxIDs())
+        {
+            PlayerPrefs.SetInt("InteractiveBoxGotten_" + box, 0);
+        }
+        PlayerPrefs.Save();
+    }
+    private List<string> GetAllBoxIDs()
+    {
+        List<string> boxIDs = new List<string>();
+        InteractiveBox[] boxes = FindObjectsOfType<InteractiveBox>();
+
+        foreach (InteractiveBox box in boxes)
+        {
+            if (box.boxID != null && !boxIDs.Contains(box.boxID))
+            {
+                boxIDs.Add(box.boxID);
+            }
+        }
+
+        return boxIDs;
+    }
     // Update is called once per frame
     void Update()
     {

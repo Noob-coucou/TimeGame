@@ -7,20 +7,17 @@ using Fungus;
 
 public abstract class Interactive : MonoBehaviour
 {
-    private Flowchart flowchart;
     private bool isPlayerNear = false;
     private Player player; // 用于存储玩家对象的引用
-
-    private void Start()
-    {
-        flowchart = GetComponent<Flowchart>();
-    }
+    [SerializeField]
+    private GameObject interactPrompt;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // 确保进入的是玩家
         {
             isPlayerNear = true;
             player = other.GetComponent<Player>(); // 获取Player组件的引用
+            interactPrompt.SetActive(true);
         }
     }
 
@@ -29,7 +26,8 @@ public abstract class Interactive : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            player = null; 
+            player = null;
+            interactPrompt.SetActive(false);
         }
     }
 
@@ -39,6 +37,7 @@ public abstract class Interactive : MonoBehaviour
         if (isPlayerNear && player != null && player.input.PlayerBasic.Interact.WasPressedThisFrame())
         {
             Interact();
+            interactPrompt.SetActive(false);
         }
     }
 
