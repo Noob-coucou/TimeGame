@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class InteractiveBox : Interactive
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
     protected override void Interact()
     {
-        
-        //Debug.Log("Interacting with the box");
+        Flowchart flowchart = GameObject.FindFirstObjectByType<Flowchart>();
+        flowchart.ExecuteBlock("GetTreasure");
+        Destroy(gameObject);
     }
     
 }
