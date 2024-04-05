@@ -16,6 +16,8 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     public float shakeThreshold;
     public CinemachineImpulseSource impulseSource;
+
+    private bool shakeWhere = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -42,9 +44,12 @@ public class TimeController : MonoBehaviour
 
             if (threshold < shakeThreshold)
             {
-                float strength = (1f - (threshold / shakeThreshold)) * 0.2f;
-                Vector3 shakeDirection = new Vector3(strength, 0f, 0f);
+                float strength = (1f - (threshold / shakeThreshold)) * 0.25f;
+
+                Vector3 shakeDirection = shakeWhere ? new Vector3(-strength, 0f, 0f) : new Vector3(strength, 0f, 0f);
                 impulseSource.GenerateImpulse(shakeDirection);
+
+                shakeWhere = !shakeWhere;
             }
             foreach (TimeControlled timeObject in timeObjects)
             {
