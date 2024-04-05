@@ -29,13 +29,14 @@ public class TimeController : MonoBehaviour
             // ¸üÐÂGameTime
             GameTime = distance;
             //Debug.Log(GameTime);
-           
+
+            foreach (TimeControlled timeObject in timeObjects)
+            {
+                //Debug.Log("timeObjects" + timeObject); 
+                timeObject.OnTimeUpdate();
+            }
         }
-        foreach (TimeControlled timeObject in timeObjects)
-        {
-           //Debug.Log("timeObjects" + timeObject); 
-           timeObject.OnTimeUpdate();
-        }
+
     }
 
     void OnGUI()

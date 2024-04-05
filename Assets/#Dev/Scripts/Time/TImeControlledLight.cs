@@ -8,7 +8,6 @@ public class TimeControlledLight : TimeControlled
     private Quaternion currentRotation;
     protected override void Start()
     {
-        base.Start();
         currentRotation = new Quaternion(-10f, 180f, 0f, 0f);
         //Debug.Log(currentRotation);
     }
