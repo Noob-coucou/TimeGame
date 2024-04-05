@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fungus;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,13 @@ public class TimeController : MonoBehaviour
     public Player player;
     public static float GameTime;
     TimeControlled[] timeObjects;
-
+    [SerializeField]
+    public float maxTimePoint;
+    [SerializeField]
+    public float minTimePoint;
+    [SerializeField]
+    public float shakeThreshold;
+    public CinemachineImpulseSource impulseSource;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -18,7 +25,7 @@ public class TimeController : MonoBehaviour
     {
         GameTime = 0f;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
+        impulseSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineImpulseSource>();
     }  
     void Update()
     {
@@ -29,32 +36,26 @@ public class TimeController : MonoBehaviour
             // ¸üÐÂGameTime
             GameTime = distance;
             //Debug.Log(GameTime);
+            float maxDistance = Mathf.Abs(GameTime - maxTimePoint);
+            float minDistance = Mathf.Abs(GameTime - minTimePoint);
+            float threshold = Mathf.Min(maxDistance, minDistance);
 
+            if (threshold < shakeThreshold)
+            {
+                float strength = (1f - (threshold / shakeThreshold)) * 0.2f;
+                Vector3 shakeDirection = new Vector3(strength, 0f, 0f);
+                impulseSource.GenerateImpulse(shakeDirection);
+            }
             foreach (TimeControlled timeObject in timeObjects)
             {
                 //Debug.Log("timeObjects" + timeObject); 
                 timeObject.OnTimeUpdate();
             }
+
+
         }
 
     }
 
-    void OnGUI()
-    {
-        GUIStyle guiStyle = new GUIStyle();
-        guiStyle.fontSize = 24;
-        if (GameTime < 0)
-        {
-            guiStyle.normal.textColor = Color.white;
-        }
-        else
-        {
-            guiStyle.normal.textColor = Color.black;
-        }
-
-        Rect rect = new Rect(10, 10, 200, 20);
-
-        GUI.Label(rect, "CurrentTime: " + GameTime.ToString("0"), guiStyle);
-    }
 
 }
