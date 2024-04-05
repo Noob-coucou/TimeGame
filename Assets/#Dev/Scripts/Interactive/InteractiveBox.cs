@@ -1,6 +1,7 @@
 using Fungus;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 public class InteractiveBox : Interactive
 {
@@ -16,7 +17,6 @@ public class InteractiveBox : Interactive
 
     void Start()
     {
-        flowchart = GameObject.FindObjectOfType<Flowchart>();
 
         if (PlayerPrefs.GetInt(GetPrefKey(), 0) == 1)
         {
@@ -28,8 +28,26 @@ public class InteractiveBox : Interactive
     {
         if (PlayerPrefs.GetInt(GetPrefKey(), 0) == 1)
             return;
+        StartCoroutine(ExecuteAndDestroyBlock("GetTreasure"));
+    }
+    private IEnumerator ExecuteAndDestroyBlock(string blockName)
+    {
+        Block targetBlock = flowchart.FindBlock(blockName);
 
-        flowchart.ExecuteBlock("GetTreasure");
+        if (targetBlock != null)
+        {
+            flowchart.ExecuteBlock(targetBlock);
+
+            // 等待块执行完成
+            while (targetBlock.IsExecuting())
+            {
+                yield return null;
+            }
+        }
+        else
+        {
+            Debug.LogError("Block not found: " + blockName);
+        }
 
         PlayerPrefs.SetInt(GetPrefKey(), 1);
         PlayerPrefs.Save();

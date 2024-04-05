@@ -13,7 +13,7 @@ public class TimeControlled : MonoBehaviour
         public Vector3 position;
     }
     [SerializeField]
-    private bool initialState;
+    private TimeState initialState;
 
     public List<TimeState> TimeStates;
 
@@ -21,8 +21,7 @@ public class TimeControlled : MonoBehaviour
     
     protected virtual void Start()
     {
-        TimeState initialTimeState = new TimeState { time = 0f, state = initialState };
-        TimeStates.Insert(0, initialTimeState);
+        TimeStates.Insert(0, initialState);
         TimeStates = TimeStates.OrderBy(ts => ts.time).ToList();
     }
     public virtual void OnTimeUpdate()
