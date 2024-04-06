@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class TestManager : MonoBehaviour
 
     void Start()
     {
+        flowchart=GameObject.FindAnyObjectByType<Flowchart>();
         flowchart.ExecuteBlock("Init");
     }
     private void InitializeGame()
@@ -66,6 +68,15 @@ public class TestManager : MonoBehaviour
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            flowchart = GameObject.FindAnyObjectByType<Flowchart>();
+            flowchart.ExecuteBlock("Reload");
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void OnGUI()

@@ -173,8 +173,9 @@ GameObject:
   - component: {fileID: 52535655}
   - component: {fileID: 52535660}
   - component: {fileID: 52535659}
+  - component: {fileID: 52535661}
   m_Layer: 0
-  m_Name: Flowchart
+  m_Name: Flowchart_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,11 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 200.20515, y: 216.19186}
+  scrollPos: {x: 455.92596, y: 242.151}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 415
-  zoom: 0.70000035
+  zoom: 1
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -205,9 +206,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 52535660}
-  selectedCommands:
-  - {fileID: 52535659}
+  - {fileID: 52535624}
+  selectedCommands: []
   variables:
   - {fileID: 52535615}
   description: 
@@ -270,7 +270,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 243.76576
     y: -82.59732
-    width: 89.999985
+    width: 89
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -524,9 +524,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 19.561855
-    y: -123.2282
-    width: 117.14282
+    x: 20.561855
+    y: -125.04639
+    width: 116
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 406.07693
     y: -71.46849
-    width: 121.428535
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 262.47733
     y: -192.93256
-    width: 67.14285
+    width: 67
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -622,6 +622,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 52535636}
   - {fileID: 52535635}
+  - {fileID: 52535661}
   suppressAllAutoSelections: 0
 --- !u!114 &52535632
 MonoBehaviour:
@@ -1138,7 +1139,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 629.7761
     y: -67.04406
-    width: 84.2857
+    width: 83
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1165,7 +1166,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 981.6989
     y: -83.23263
-    width: 94.28569
+    width: 94
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1191,7 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 29
   indentLevel: 0
-  storyText: "\u7ED5\u8FC7\u53BB\u770B\u770B\u2026\u2026"
+  storyText: "\u8DDF\u5979\u8BF4\u8BF4\u8BDD\u5427\u3002"
   description: 
   character: {fileID: 998953857}
   portrait: {fileID: 0}
@@ -1218,7 +1219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 28
   indentLevel: 0
-  storyText: "\u623F\u5B50\u91CC\u4F3C\u4E4E\u6709\u4EBA\uFF1F"
+  storyText: "\u8FD8\u6765\u5F97\u53CA\uFF01"
   description: 
   character: {fileID: 998953857}
   portrait: {fileID: 0}
@@ -1315,7 +1316,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 771.2231
     y: -20.477676
-    width: 98.5714
+    width: 98
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1398,8 +1399,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1102.6512
-    y: -37.620525
-    width: 112.85712
+    y: -39.438705
+    width: 113
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1507,7 +1508,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1024.08
     y: 12.379458
-    width: 111.42854
+    width: 110
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1562,7 +1563,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1006.93665
     y: 86.665146
-    width: 132.8571
+    width: 131
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1626,7 +1627,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &52535659
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1653,7 +1654,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &52535660
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1665,9 +1666,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 834.08
+    x: 835.8982
     y: 40.950867
-    width: 98.5714
+    width: 98
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1678,6 +1679,33 @@ MonoBehaviour:
   commandList:
   - {fileID: 52535659}
   suppressAllAutoSelections: 0
+--- !u!114 &52535661
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52535604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 48
+  indentLevel: 0
+  storyText: "WASD\u5BF9\u5E94\u7740\u524D\u540E\u5DE6\u53F3\n\u6309\u4F4FShift\u5954\u8DD1\nR\u952E\u53EF\u4EE5\u91CD\u5F00"
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!43 &57502815
 Mesh:
   m_ObjectHideFlags: 0
@@ -6845,7 +6873,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660858222}
-  m_LocalRotation: {x: 0.09351697, y: 0.000000017130978, z: -0.0000000016090885, w: 0.9956177}
+  m_LocalRotation: {x: 0.09351697, y: -0.000000017130978, z: 0.0000000016090885, w: 0.9956177}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10166,7 +10194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.09351697, y: 0.00000003426195, z: -0.0000000032181768, w: 0.9956177}
+  m_LocalRotation: {x: 0.09351697, y: -0.00000003426195, z: 0.0000000032181768, w: 0.9956177}
   m_LocalPosition: {x: 0, y: 1.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
