@@ -23,7 +23,11 @@ public class GIrl : Interactive
             Seen = true;
             TimeController.GameClear = true;
         }
-        
+        else
+        {
+            flowchart.ExecuteBlock("Success");
+
+        }
         
     }
 }

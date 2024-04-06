@@ -13,7 +13,7 @@ public class InteractiveItem : Interactive
     {
         flowchart.ExecuteBlock(Storyblock);
         TimeController.GameClear = true;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
 
     }
 }

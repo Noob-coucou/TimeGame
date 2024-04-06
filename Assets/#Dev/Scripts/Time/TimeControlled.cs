@@ -18,16 +18,16 @@ public class TimeControlled : MonoBehaviour
     public List<TimeState> TimeStates;
 
     private int currentStateIndex = 0;
-    
+
     protected virtual void Start()
     {
-        TimeStates.Insert(0,initialState);
+        TimeStates.Insert(0, initialState);
         TimeStates = TimeStates.OrderBy(ts => ts.time).ToList();
         UpdateState();
     }
     public virtual void OnTimeUpdate()
     {
-        if (TimeStates.Count <= 1) 
+        if (TimeStates.Count <= 1)
             return;
 
         // 回到上一个状态
@@ -37,7 +37,7 @@ public class TimeControlled : MonoBehaviour
             {
                 currentStateIndex--;
             }
-           
+
         }
         // 前进至下一个状态
         else if (currentStateIndex < TimeStates.Count - 1 && TimeController.GameTime >= TimeStates[currentStateIndex + 1].time)
@@ -46,32 +46,37 @@ public class TimeControlled : MonoBehaviour
             {
                 currentStateIndex++;
             }
-            
+
         }
         UpdateState();
         InterpolatePosition();
     }
-    
+
     //* 应用当前状态
     private void UpdateState()
     {
-           gameObject.SetActive(TimeStates[currentStateIndex].state);
+        gameObject.SetActive(TimeStates[currentStateIndex].state);
     }
     //* Function：计算物体在两个状态之间的位置并更新
     private void InterpolatePosition()
     {
-        TimeState previousState = currentStateIndex > 0 ? TimeStates[currentStateIndex - 1] : TimeStates[currentStateIndex];
-        TimeState nextState = currentStateIndex < TimeStates.Count - 1 ? TimeStates[currentStateIndex + 1] : TimeStates[currentStateIndex];
-    
-        float lerpFactor = 0f;
-        if (nextState.time != previousState.time)
+        if (TimeStates.Count < 2)
         {
-            lerpFactor = (TimeController.GameTime - previousState.time) / (nextState.time - previousState.time);
+            return;
         }
+
+        if (currentStateIndex >= TimeStates.Count - 1)
+        {
+            currentStateIndex = TimeStates.Count - 2;
+        }
+
+        TimeState previousState = TimeStates[currentStateIndex];
+        TimeState nextState = TimeStates[currentStateIndex + 1];
+
+        float lerpFactor = Mathf.Clamp01((TimeController.GameTime - previousState.time) / (nextState.time - previousState.time));
 
         Vector3 interpolatedPosition = Vector3.Lerp(previousState.position, nextState.position, lerpFactor);
         transform.position = interpolatedPosition;
     }
 }
-
 
