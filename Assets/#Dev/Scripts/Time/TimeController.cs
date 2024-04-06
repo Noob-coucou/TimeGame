@@ -11,17 +11,19 @@ public class TimeController : MonoBehaviour
     public static float GameTime;
     TimeControlled[] timeObjects;
     [SerializeField]
-    public float maxTimePoint;
+    private float maxTimePoint;
     [SerializeField]
-    public float minTimePoint;
+    private float minTimePoint;
     [SerializeField]
-    public float shakeThreshold;
+    private float shakeThreshold;
     [SerializeField]
-    public float strengthnumber;
+    private float strengthnumber;
+    
     public CinemachineImpulseSource impulseSource;
 
     public bool GamePlaying;
     public Flowchart flowchart;
+    public static bool GameClear;
 
     private bool shakeWhere = true;
     // Start is called before the first frame update
@@ -32,6 +34,7 @@ public class TimeController : MonoBehaviour
     }
     void Start()
     {
+        GameClear= false; 
         GameTime = 0f;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         impulseSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineImpulseSource>();
@@ -42,7 +45,7 @@ public class TimeController : MonoBehaviour
         {
 
 
-            if (GameTime >= maxTimePoint || GameTime <= minTimePoint)
+            if ((GameTime >= maxTimePoint || GameTime <= minTimePoint) && !GameClear)
             {
                 // 重新加载当前场景，重置游戏状态
                 flowchart.ExecuteBlock("Reload");
@@ -58,7 +61,7 @@ public class TimeController : MonoBehaviour
             float minDistance = Mathf.Abs(GameTime - minTimePoint);
             float threshold = Mathf.Min(maxDistance, minDistance);
 
-            if (threshold < shakeThreshold)
+            if (threshold < shakeThreshold && !GameClear)
             {
                 float strength = (1f - (threshold / shakeThreshold)) * strengthnumber;
 
@@ -69,6 +72,10 @@ public class TimeController : MonoBehaviour
             }
             foreach (TimeControlled timeObject in timeObjects)
             {
+                if (timeObject == null || timeObject.Equals(null))
+                {
+                    continue;
+                }
                 //Debug.Log("timeObjects" + timeObject); 
                 timeObject.OnTimeUpdate();
             }

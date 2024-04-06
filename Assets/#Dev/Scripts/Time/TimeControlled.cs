@@ -21,12 +21,14 @@ public class TimeControlled : MonoBehaviour
     
     protected virtual void Start()
     {
-        TimeStates.Insert(0, initialState);
+        TimeStates.Insert(0,initialState);
         TimeStates = TimeStates.OrderBy(ts => ts.time).ToList();
+        UpdateState();
     }
     public virtual void OnTimeUpdate()
     {
-        if (TimeStates.Count <= 1) return;
+        if (TimeStates.Count <= 1) 
+            return;
 
         // 回到上一个状态
         if (TimeController.GameTime < TimeStates[currentStateIndex].time)
@@ -53,7 +55,7 @@ public class TimeControlled : MonoBehaviour
     //* 应用当前状态
     private void UpdateState()
     {
-        gameObject.SetActive(TimeStates[currentStateIndex].state);
+           gameObject.SetActive(TimeStates[currentStateIndex].state);
     }
     //* Function：计算物体在两个状态之间的位置并更新
     private void InterpolatePosition()
