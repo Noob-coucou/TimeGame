@@ -9,10 +9,21 @@ public class GIrl : Interactive
     private Flowchart flowchart;
     [SerializeField]
     private string Storyblock;
+    private bool Seen;
+
+    private void Start()
+    {
+        Seen = false;
+    }
     protected override void Interact()
     {
-        flowchart.ExecuteBlock(Storyblock);
-        TimeController.GameClear = true;
+        if (!Seen)
+        {
+            flowchart.ExecuteBlock(Storyblock);
+            Seen = true;
+            TimeController.GameClear = true;
+        }
+        
         
     }
 }
